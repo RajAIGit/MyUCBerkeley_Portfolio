@@ -78,3 +78,5 @@ Next Steps
 1. Deploy predictive pricing tool for dealership.
 2. Train staff on data-driven inventory selection.
 3. Explore partnerships for sourcing hybrid/electric vehicles.
+
+Note: The file vehicles.csv used for this analysis was over 40MB hence was not uploaded to GIT
