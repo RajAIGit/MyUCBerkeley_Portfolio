@@ -326,5 +326,3 @@ How accurately can short-term electricity demand be predicted across different r
 5. National Oceanic and Atmospheric Administration (NOAA). (2024). *Weather API Documentation*. Retrieved from https://www.weather.gov/documentation/services-web-api
 
 6. California ISO (CAISO). (2024). *Open Access Same-Time Information System (OASIS)*. Retrieved from http://oasis.caiso.com/
-
-issue on GitHub.*
