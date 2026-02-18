@@ -1,26 +1,5 @@
 # Electricity Demand Forecasting: Short-Term Load Prediction
 
-**Author:** [Your Name]  
-**Institution:** [Your University]  
-**Course:** Data Science Capstone  
-**Date:** February 2026
-
----
-
-## 📋 Table of Contents
-- [Project Overview](#project-overview)
-- [Research Question](#research-question)
-- [Dataset](#dataset)
-- [Methodology](#methodology)
-- [Key Findings](#key-findings)
-- [Results Summary](#results-summary)
-- [Installation & Usage](#installation--usage)
-- [Project Structure](#project-structure)
-- [Future Work](#future-work)
-- [References](#references)
-
----
-
 ## 🎯 Project Overview
 
 This capstone project develops a machine learning system to forecast short-term electricity demand across different regions using historical consumption data, weather patterns, and temporal factors. Accurate demand forecasting is critical for grid operators to ensure reliable power delivery, prevent outages, optimize generation scheduling, and integrate renewable energy sources effectively.
@@ -57,17 +36,12 @@ How accurately can short-term electricity demand be predicted across different r
    - Weather alerts and extreme event indicators
    - Source: https://www.weather.gov/documentation/services-web-api
 
-3. **Local Utility Open Datasets**
-   - PG&E, ISO-NE, CAISO load profiles
-   - System demand and capacity data
-
 ### Dataset Characteristics
 
 - **Time Period:** January 2023 - December 2024 (2 years)
 - **Granularity:** Hourly observations
 - **Total Records:** ~70,000 hourly observations across all regions
 - **Regions:** California (CAISO), Texas (ERCOT), New York (NYISO), Florida (FRCC)
-- **Data Realism:** Dataset reflects actual regional characteristics and load patterns from major U.S. independent system operators (ISOs)
 
 **Regional Characteristics (Based on Real ISOs):**
 
@@ -85,15 +59,6 @@ How accurately can short-term electricity demand be predicted across different r
 - Rolling statistics (24-hour moving averages and standard deviations)
 - Interaction features (temperature × humidity, temperature²)
 
-### Data Quality
-
-- **Completeness:** 98.5% complete (realistic ~1.5% missing values)
-- **Duplicates:** <0.1% (removed during cleaning)
-- **Outliers:** Retained as they represent real peak demand events critical for grid operations
-- **Realism:** Data incorporates actual grid characteristics from CAISO, ERCOT, NYISO, and FRCC operating regions
-
----
-
 ## 🔧 Methodology
 
 ### 1. Data Preprocessing
@@ -108,7 +73,6 @@ How accurately can short-term electricity demand be predicted across different r
 
 **Outlier Treatment:**
 - Detected outliers using Interquartile Range (IQR) method
-- **Decision:** Retained outliers as they represent genuine peak demand events (critical for grid stress analysis)
 - Monitored extreme values for potential data quality issues
 
 ### 2. Exploratory Data Analysis (EDA)
@@ -159,8 +123,6 @@ How accurately can short-term electricity demand be predicted across different r
 - `temp_humidity_interaction`: Combined climate stress indicator
 - `is_peak_hour`: Binary indicator for business hours (8 AM - 6 PM)
 - `is_summer` / `is_winter`: Seasonal indicators
-
-**Final Feature Count:** 25 features after engineering
 
 ### 4. Baseline Model Development
 
@@ -336,235 +298,18 @@ How accurately can short-term electricity demand be predicted across different r
 - Reduced unplanned outages: 15-20% decrease
 - Improved customer satisfaction: Fewer brownouts/blackouts
 
----
-
-## 🚀 Installation & Usage
-
-### Prerequisites
-
-```bash
-# Python version
-Python 3.8 or higher
-
-# Required packages (see requirements.txt)
-pandas >= 1.3.0
-numpy >= 1.21.0
-matplotlib >= 3.4.0
-seaborn >= 0.11.0
-plotly >= 5.3.0
-scikit-learn >= 1.0.0
-jupyter >= 1.0.0
-```
-
-### Setup Instructions
-
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/your-username/electricity-demand-forecast.git
-   cd electricity-demand-forecast
-   ```
-
-2. **Create Virtual Environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Download Data** (if not included)
-   ```bash
-   # Instructions for downloading EIA and NOAA data
-   python src/data_download.py --start-date 2023-01-01 --end-date 2024-12-31
-   ```
-
-### Running the Analysis
-
-**Option 1: Jupyter Notebook (Recommended)**
-```bash
-jupyter notebook notebooks/01_EDA_and_Baseline_Model.ipynb
-```
-
-**Option 2: Command Line Execution**
-```bash
-# Run full pipeline
-python src/train_model.py --config config/baseline_config.yaml
-
-# Make predictions
-python src/predict.py --model models/rf_baseline.pkl --input data/test_data.csv
-```
-
-### Reproducing Results
-
-All analyses are fully reproducible with `random_state=42` set throughout the codebase.
-
-```python
-# Example: Load trained model and make predictions
-from src.models import load_model
-from src.data import load_test_data
-
-model = load_model('models/rf_baseline.pkl')
-X_test, y_test = load_test_data('data/test_data.csv')
-predictions = model.predict(X_test)
-```
-
----
-
-## 📁 Project Structure
-
-```
-electricity-demand-forecast/
-│
-├── README.md                          # This file - project overview and findings
-├── requirements.txt                   # Python package dependencies
-├── .gitignore                        # Git ignore rules
-│
-├── data/                             # Data directory (not tracked in Git)
-│   ├── raw/                          # Raw data from EIA/NOAA APIs
-│   ├── processed/                    # Cleaned and engineered datasets
-│   └── external/                     # External reference data (holidays, etc.)
-│
-├── notebooks/                        # Jupyter notebooks for analysis
-│   ├── 01_EDA_and_Baseline_Model.ipynb   # Main analysis notebook (Assignment 20.1)
-│   ├── 02_Advanced_Models.ipynb          # LSTM, ARIMA (Module 24)
-│   └── 03_Model_Comparison.ipynb         # Final model evaluation
-│
-├── src/                              # Source code (Python modules)
-│   ├── __init__.py
-│   ├── data_loading.py               # Data download and loading utilities
-│   ├── data_cleaning.py              # Cleaning and preprocessing functions
-│   ├── feature_engineering.py        # Feature creation pipelines
-│   ├── models.py                     # Model training and evaluation
-│   ├── visualization.py              # Plotting functions
-│   └── utils.py                      # Helper functions
-│
-├── models/                           # Saved trained models
-│   ├── rf_baseline.pkl               # Random Forest baseline model
-│   └── scaler.pkl                    # Feature scaler
-│
-├── visualizations/                   # Saved plots and figures
-│   ├── eda/                          # EDA visualizations
-│   ├── model_performance/            # Model evaluation plots
-│   └── reports/                      # Executive summary figures
-│
-├── config/                           # Configuration files
-│   ├── baseline_config.yaml          # Baseline model hyperparameters
-│   └── data_sources.yaml             # API endpoints and data paths
-│
-└── tests/                            # Unit tests
-    ├── test_data_cleaning.py
-    ├── test_feature_engineering.py
-    └── test_models.py
-```
 
 ### Key Files
 
-- **`notebooks/01_EDA_and_Baseline_Model.ipynb`**: Main deliverable for Assignment 20.1
+- **`Electricity_Demand_Forecase/Elec_STD_Forecast.ipynb`**: 
   - Complete EDA workflow
   - Baseline Random Forest model
   - All visualizations and findings
   
 - **`README.md`**: Comprehensive project documentation
   - Research question and methodology
-  - Results summary
-  - Usage instructions
+  - Results summary and next steps
 
----
-
-## 🔮 Future Work (Module 24 Roadmap)
-
-### 1. Advanced Modeling
-
-**Time Series Models:**
-- **ARIMA/SARIMA**: Explicit seasonal decomposition
-- **Prophet**: Facebook's forecasting library with holiday effects
-- **Vector Autoregression (VAR)**: Multi-region joint modeling
-
-**Deep Learning:**
-- **LSTM (Long Short-Term Memory)**: Sequential pattern learning
-- **GRU (Gated Recurrent Units)**: Faster alternative to LSTM
-- **Temporal Convolutional Networks**: Parallelizable sequence modeling
-- **Transformer-based models**: Attention mechanisms for long-range dependencies
-
-**Ensemble Methods:**
-- **Stacking**: Combine Random Forest + LSTM + ARIMA
-- **Weighted averaging**: Performance-based weighting
-- **Boosting**: XGBoost, LightGBM, CatBoost
-
-### 2. Enhanced Features
-
-**Additional Data Sources:**
-- Federal and state holiday calendars
-- Special events (sports games, concerts, conventions)
-- Renewable energy generation (solar irradiance, wind forecasts)
-- Economic indicators (industrial activity indices)
-- Real-time traffic data (mobility patterns)
-- Social media trends (event detection)
-
-**Advanced Feature Engineering:**
-- Wavelet transforms for multi-scale patterns
-- Fourier features for periodicity
-- Weather forecast uncertainty quantification
-- Grid topology features (transmission constraints)
-
-### 3. Extended Forecast Horizons
-
-- **Current:** 1-hour ahead baseline
-- **Target Horizons:**
-  - 1-6 hours: Intraday operations
-  - 12-24 hours: Day-ahead market
-  - 1-7 days: Weekly planning
-  - 1-4 weeks: Monthly optimization
-
-### 4. Hyperparameter Optimization
-
-**Techniques:**
-- Grid search with TimeSeriesSplit cross-validation
-- Randomized search for computational efficiency
-- Bayesian optimization (Optuna, Hyperopt)
-- Neural Architecture Search (NAS) for deep learning
-
-### 5. Production Deployment
-
-**Model Serving:**
-- REST API using FastAPI/Flask
-- Real-time prediction endpoint
-- Batch prediction pipeline
-- Model versioning and A/B testing
-
-**Monitoring & MLOps:**
-- Automated retraining pipeline (weekly/monthly)
-- Concept drift detection (data distribution monitoring)
-- Performance degradation alerts
-- Explainability dashboard (SHAP values)
-
-**Infrastructure:**
-- Containerization (Docker)
-- Orchestration (Kubernetes)
-- CI/CD pipeline (GitHub Actions)
-- Cloud deployment (AWS SageMaker / GCP Vertex AI)
-
-### 6. Probabilistic Forecasting
-
-**Uncertainty Quantification:**
-- Prediction intervals (95% confidence bounds)
-- Quantile regression
-- Conformal prediction
-- Probabilistic neural networks
-
-### 7. Regional Expansion
-
-- Multi-region joint modeling
-- Transfer learning across regions
-- Region-specific model fine-tuning
-- Causal analysis of cross-region effects
-
----
-
-## 📚 References
 
 ### Academic Literature
 
@@ -582,70 +327,4 @@ electricity-demand-forecast/
 
 6. California ISO (CAISO). (2024). *Open Access Same-Time Information System (OASIS)*. Retrieved from http://oasis.caiso.com/
 
-### Technical Documentation
-
-7. Pedregosa, F., et al. (2011). *Scikit-learn: Machine learning in Python*. Journal of Machine Learning Research, 12, 2825-2830.
-
-8. Chollet, F. (2015). *Keras*. GitHub repository: https://github.com/fchollet/keras
-
-9. McKinney, W. (2010). *Data structures for statistical computing in Python*. Proceedings of the 9th Python in Science Conference, 56-61.
-
-### Industry Standards
-
-10. North American Electric Reliability Corporation (NERC). (2023). *BAL-001-2 — Real Power Balancing Control Performance*. Standards documentation.
-
-11. Federal Energy Regulatory Commission (FERC). (2022). *Order No. 2222: Participation of Distributed Energy Resource Aggregations*. Regulatory guidance.
-
----
-
-## 🙋 Contact & Acknowledgments
-
-**Author:** [Your Name]  
-**Email:** [your.email@university.edu]  
-**GitHub:** [github.com/your-username](https://github.com/your-username)  
-**LinkedIn:** [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-
-### Acknowledgments
-
-- **Course Instructor:** [Instructor Name] - for project guidance and feedback
-- **Data Providers:** U.S. EIA, NOAA, CAISO - for open data access
-- **Open Source Community:** Scikit-learn, Pandas, Matplotlib developers
-- **Peer Reviewers:** [Names] - for constructive feedback during development
-
----
-
-## 📄 License
-
-This project is released under the MIT License. See `LICENSE` file for details.
-
-**Academic Use:** This project was developed as part of a university capstone course. If you use this work, please cite:
-
-```bibtex
-@misc{electricity_forecast_2026,
-  author = {Your Name},
-  title = {Electricity Demand Forecasting: Short-Term Load Prediction Using Machine Learning},
-  year = {2026},
-  publisher = {GitHub},
-  journal = {GitHub Repository},
-  howpublished = {\url{https://github.com/your-username/electricity-demand-forecast}}
-}
-```
-
----
-
-## 📊 Quick Links
-
-- **📓 Main Analysis Notebook:** [notebooks/01_EDA_and_Baseline_Model.ipynb](notebooks/01_EDA_and_Baseline_Model.ipynb)
-- **📈 Interactive Dashboard:** [Coming in Module 24]
-- **📦 Model Artifacts:** [models/rf_baseline.pkl](models/rf_baseline.pkl)
-- **📋 Requirements:** [requirements.txt](requirements.txt)
-- **🐛 Issue Tracker:** [GitHub Issues](https://github.com/your-username/electricity-demand-forecast/issues)
-
----
-
-**Last Updated:** February 16, 2026  
-**Version:** 1.0.0 (Assignment 20.1 - Initial Report & EDA)
-
----
-
-*This README is part of the Capstone Assignment 20.1 deliverable. For questions or clarifications, please contact the author or open an issue on GitHub.*
+issue on GitHub.*
