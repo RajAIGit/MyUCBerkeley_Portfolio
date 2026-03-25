@@ -808,5 +808,3 @@ jupyter notebook
 This project was developed as part of a university capstone course. 
 
 ---
-
-deployment, with strong emphasis on business value creation and real-world applicability.*
