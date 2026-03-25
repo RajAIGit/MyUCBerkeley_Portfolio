@@ -1,10 +1,9 @@
 # Electricity Demand Forecasting: Machine Learning for Grid Optimization
 
-**Author:** [Your Name]  
-**Institution:** [Your University]  
+**Author:** [Thangaraj Selvaraj]  
 **Program:** Data Science Capstone Project  
 **Submission Date:** February 2026  
-**Contact:** [your.email@university.edu]
+**Contact:** [mails2thangaraj@gmail.com]
 
 ---
 
@@ -700,28 +699,13 @@ Extended forecasting to 1-24 hours ahead:
 electricity-demand-forecast/
 │
 ├── README.md                          ← This comprehensive documentation
-├── requirements.txt                   ← Python dependencies
-├── .gitignore                        ← Version control configuration
 │
 ├── data/
 │   ├── electricity_demand_data.csv   ← Main dataset (70K+ records)
-│   ├── DATA_DICTIONARY.md            ← Complete data documentation
-│   └── README.md                     ← Data folder guide
-│
+│ 
 ├── notebooks/
 │   ├── 01_EDA_and_Baseline_Model.ipynb    ← Module 20 (SUBMITTED)
 │   └── 02_Advanced_Models.ipynb            ← Module 24 (SUBMITTED)
-│
-├── src/
-│   ├── __init__.py
-│   └── data_loading.py               ← Data utilities
-│
-├── models/                            ← Saved model artifacts
-│   └── .gitkeep
-│
-└── visualizations/                    ← Generated plots
-    └── .gitkeep
-```
 
 ### Submission Deliverables
 
@@ -747,9 +731,7 @@ electricity-demand-forecast/
 
 **Supporting Files:**
 - **README.md:** Complete project documentation
-- **requirements.txt:** All Python dependencies
 - **electricity_demand_data.csv:** Dataset (70,191 records)
-- **DATA_DICTIONARY.md:** Complete data reference
 
 ### Reproducibility
 
@@ -784,56 +766,6 @@ jupyter notebook
 
 ---
 
-## 🎓 Learning Outcomes & Skills Demonstrated
-
-### Technical Skills
-
-**Data Science:**
-- ✅ Exploratory Data Analysis (EDA)
-- ✅ Statistical hypothesis testing
-- ✅ Feature engineering & selection
-- ✅ Time series analysis
-- ✅ Model evaluation & validation
-
-**Machine Learning:**
-- ✅ Supervised learning (regression)
-- ✅ Ensemble methods
-- ✅ Deep learning (LSTM)
-- ✅ Hyperparameter optimization
-- ✅ Cross-validation strategies
-
-**Programming:**
-- ✅ Python (Pandas, NumPy, Scikit-learn)
-- ✅ TensorFlow/Keras
-- ✅ Data visualization (Matplotlib, Seaborn, Plotly)
-- ✅ Version control (Git)
-- ✅ Code documentation
-
-**Domain Knowledge:**
-- ✅ Energy sector understanding
-- ✅ Grid operations & reliability
-- ✅ Weather impact on demand
-- ✅ Renewable energy integration
-- ✅ Business value quantification
-
-### Methodological Rigor
-
-- ✅ Proper train-test splitting (temporal)
-- ✅ Cross-validation (TimeSeriesSplit)
-- ✅ Multiple evaluation metrics
-- ✅ Statistical significance testing
-- ✅ Error analysis & diagnostics
-- ✅ Reproducible research practices
-
-### Communication
-
-- ✅ Technical documentation
-- ✅ Data visualization
-- ✅ Executive summaries
-- ✅ Code comments & markdown
-- ✅ Business impact analysis
-
----
 
 ## 📚 References & Resources
 
@@ -871,108 +803,10 @@ jupyter notebook
 
 ---
 
-## 📞 Contact Information
-
-**Student:**  
-[Your Full Name]  
-[Your Email Address]  
-[Your LinkedIn Profile]  
-[Your GitHub Profile]
-
-**Institution:**  
-[University Name]  
-Data Science Program  
-[Instructor Name]
-
-**Project Repository:**  
-[GitHub Repository Link]
-
----
-
-## 🙏 Acknowledgments
-
-- **Course Instructor:** [Name] - for guidance and feedback throughout the project
-- **Data Providers:** U.S. EIA, NOAA, CAISO, ERCOT, NYISO, FRCC - for open data access
-- **Open Source Community:** Contributors to Scikit-learn, TensorFlow, Pandas, and other libraries
-- **Peer Reviewers:** [Names if applicable] - for constructive feedback and suggestions
-
----
-
 ## 📄 License & Citation
 
 This project was developed as part of a university capstone course. 
 
-**Academic Citation:**
-```bibtex
-@misc{electricity_forecast_2026,
-  author = {Your Name},
-  title = {Electricity Demand Forecasting: Machine Learning for Grid Optimization},
-  year = {2026},
-  institution = {Your University},
-  type = {Capstone Project},
-  howpublished = {\url{https://github.com/your-username/electricity-demand-forecast}}
-}
-```
-
-**Code License:** MIT License  
-**Data Attribution:** See individual data sources listed in References section
-
 ---
 
-## ✅ Capstone Requirements Checklist
-
-### Module 20 Requirements (Assignment 20.1)
-
-- [x] **Project Organization (5 pts)**
-  - [x] README with summary of findings
-  - [x] Link to Jupyter notebook
-  - [x] Properly formatted notebooks
-  - [x] Appropriate file names and locations
-
-- [x] **Syntax & Code Quality (5 pts)**
-  - [x] Libraries imported correctly
-  - [x] No code errors
-  - [x] No long output strings
-  - [x] Pandas competency demonstrated
-  - [x] Visualization libraries used (Matplotlib, Seaborn, Plotly)
-  - [x] Appropriate code comments
-  - [x] Sensible variable names
-
-- [x] **Visualizations (5 pts)**
-  - [x] Appropriate plots for categorical/continuous variables
-  - [x] Readable labels and titles
-  - [x] Legible axes
-  - [x] Subplots used appropriately
-  - [x] Proper scaling
-
-- [x] **Data Cleaning & EDA (5 pts)**
-  - [x] Missing value imputation
-  - [x] Duplicate removal
-  - [x] Outlier analysis
-  - [x] Feature engineering
-
-- [x] **Modeling (5 pts)**
-  - [x] Appropriate ML model (Random Forest)
-  - [x] Valid metric interpretation
-  - [x] Clear metric identification (RMSE, MAE, MAPE, R²)
-  - [x] Strong rationale for metrics
-
-**Total: 25/25 Points**
-
-### Module 24 Enhancements
-
-- [x] Advanced models implemented (LSTM, SARIMA, XGBoost)
-- [x] Model comparison performed
-- [x] Multi-horizon forecasting developed
-- [x] Ensemble methodology created
-- [x] Production deployment strategy documented
-
----
-
-**Final Submission Date:** [Date]  
-**Status:** ✅ Ready for Review  
-**Version:** 1.0 - Final Submission
-
----
-
-*This comprehensive project demonstrates mastery of the complete data science workflow from problem formulation through production deployment, with strong emphasis on business value creation and real-world applicability.*
+deployment, with strong emphasis on business value creation and real-world applicability.*
